@@ -77,6 +77,9 @@ private val scanProgress: MutableState<Float> = mutableStateOf(0.0f)
 
 fun getCurrentScanOption(): ScanOptions {
 
+    if (Operator.values()[scanTypeSelectedOptionIdx.value].name == "unknown" && scanInputVal.value == "") {
+        scanInputVal.value = "1";
+    }
     return ScanOptions(
         inputVal = scanInputVal.value,
         numType = NumType.values()[valueTypeSelectedOptionIdx.value],
